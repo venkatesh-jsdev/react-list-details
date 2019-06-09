@@ -16,7 +16,6 @@ class ContinentDetails extends React.Component{
               { ({loading, error, data}) => {
                   if(loading) return 'Loading...';
                   if(error) return 'Error...';
-                  console.log("data", data);
                   const { continent } = data;
                   
                 return <h1>{continent.name}</h1>

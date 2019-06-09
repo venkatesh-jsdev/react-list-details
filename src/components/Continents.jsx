@@ -7,16 +7,20 @@ import { ApolloProvider, Query } from 'react-apollo';
 import { Navbar, ListGroup, NavbarBrand } from 'react-bootstrap';
 import { client, GET_CONTINENTS } from '../Queries';
 import ContinentDetails from "./ContinentDetails";
+import { throttle } from "throttle-debounce";
 
 class Continents extends React.Component{
   
   constructor(){
     super();
-    this.state = {code:''}
+    this.state = {code:''};
+    this.detailsThrottled = throttle(500, this._renderSubComp);
   }
   
   handleClick(code, e){
-    this.setState({code:code});
+    this.setState({code:code}, () => {
+      this.detailsThrottled(code);
+    });
   }
   
   _renderSubComp(){
