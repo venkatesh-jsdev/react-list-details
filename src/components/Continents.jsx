@@ -5,7 +5,7 @@
 import React from 'react';
 import { ApolloProvider, Query } from 'react-apollo';
 import { Navbar, ListGroup, NavbarBrand } from 'react-bootstrap';
-import { client, GET_CONTINENTS, GET_CONTINENT_DETAILS } from '../Queries';
+import { client, GET_CONTINENTS } from '../Queries';
 import ContinentDetails from "./ContinentDetails";
 
 class Continents extends React.Component{
@@ -39,9 +39,7 @@ class Continents extends React.Component{
               { ({loading, error, data}) => {
                   if(loading) return 'Loading...';
                   if(error) return 'Error...';
-                  console.log("data", data);
                   const { continents } = data;
-                  console.log("cont", data);
                   return continents.map(continent =>
                     <ListGroup.Item key={continent.code} onClick={() => this.handleClick(continent.code)}>{continent.name}</ListGroup.Item>
                   )
