@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider, Query } from 'react-apollo';
-import { Navbar, ListGroup, NavbarBrand } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import { client, GET_CONTINENT_DETAILS } from '../Queries';
 import PropTypes from 'prop-types';
 
